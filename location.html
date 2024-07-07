@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+<body>
+<div class="header">
+  <h1>Admin Dashboard</h1>
+</div>
+<div class="sidebar">
+  <ul>
+    <li class="menu-item"><a href="#">Dashboard</a></li>
+    <li class="menu-item"><a href="manage_buses.php">Manage Buses</a></li>
+    <li class="menu-item"><a href="manage_drivers.php">Manage Drivers</a></li>
+    <li class="menu-item"><a href="#">Reports</a></li>
+    <li class="menu-item"><a href="#">Settings</a></li>
+    <li class="menu-item"><a href="index.html">Logout</a></li>
+  </ul>
+</div>
+<div class="main-content">
+  <div class="overview">
+    <h2>Overview</h2>
+    <!--                                                -->
+  </div>
+  <div class="bus-list">
+    <h2>Current Bus Location</h2>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <select name="bus_number">
+        <!--                                           -->
+      </select>
+      <button type="submit">View Details</button>
+    </form>
+  </div>
+</div>
+
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "userlog";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['bus_number']) && !empty($_POST['bus_number'])) {
+        $busNumber = $_POST['bus_number'];
+        $stmt = $conn->prepare("SELECT * FROM bus WHERE bus_number = ?");
+        $stmt->bind_param("s", $busNumber);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $_SESSION['bus_number'] = $busNumber;
+            switch ($busNumber) {
+                case '15':
+                    header("Location: home.html");
+                    exit();
+                case '10':
+                    header("Location: home2.html");
+                    exit();
+                case '1':
+                    header("Location: home3.html");
+                    exit();
+                case '7':
+                    header("Location: home4.html");
+                    exit();
+                case '11':
+                    header("Location: home5.html");
+                    exit();
+                default:
+                    echo "Unknown bus type.";
+                    exit();
+            }
+        } else {
+            echo "Invalid Bus Number";
+        }
+        $stmt->close();
+    } else {
+        echo "Please provide a bus number.";
+    }
+}
+$conn->close();
+?>
+</body>
+</html>

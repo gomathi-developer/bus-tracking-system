@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="front.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>       
+        <form class="form" action="k4.php" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <label for="user_type">User Type:</label><br>
+            <select id="user_type" name="user_type" required>
+                <option value="admin">Admin</option>
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+                <option value="driver">Driver</option>
+            </select><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

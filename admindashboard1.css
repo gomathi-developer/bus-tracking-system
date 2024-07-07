@@ -1,0 +1,80 @@
+
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.sidebar {
+    background-color: #f4f4f4;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ddd;
+}
+
+.main-content {
+    margin-left: 220px; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100%; 
+}
+
+.overview,
+.bus-list,
+.additional-bus-list {
+    width: 48%;
+    box-sizing: border-box;
+}
+
+.bus-list ul,
+.additional-bus-list ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.bus-list ul li,
+.additional-bus-list ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.bus-list button,
+.additional-bus-list button {
+    margin-top: 10px;
+}

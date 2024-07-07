@@ -1,0 +1,19 @@
+databse name userlog
+table name bus
+
+bus_number  id          route
+bus 7       1      narasipuram to thondamuthur
+bus 10      2      narasipuram to kanuvai
+bus 11      3      narasipuram to perur
+raja 15     4      narasipuram to karunya
+
+
+table name drivers
+
+name        id          route
+kumar       1      narasipuram to thondamuthur
+gopi        2      narasipuram to kanuvai
+ravi        3      narasipuram to perur
+raja        4      narasipuram to karunya
+
+
